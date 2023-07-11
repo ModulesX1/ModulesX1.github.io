@@ -113,13 +113,10 @@ const util = {
     }
 }
 
-
+let initContainer = false;
 const AlertContainer = util.createAlertNode( "div", {
     className: "alert->container"
 });
-// Add alert container to document body
-window.document.body.appendChild( AlertContainer );
-
 
 /**
  * @param { Object } options
@@ -130,6 +127,11 @@ window.document.body.appendChild( AlertContainer );
  * @param { Function } options.success Callback function if alert closed
  */
 function NewAlert( options ) {
+    
+    if ( !initContainer ) {
+        initContainer = true;
+        window.document.body.appendChild( AlertContainer );
+    }
     
     const AlertToast = util.createAlertNode( "div", {
         className: "alert->toast alert->show"
