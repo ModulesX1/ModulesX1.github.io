@@ -123,7 +123,6 @@ const AlertStyle = util.createAlertNode( "style", {
     className: "alert->stylesheet"
 });
 AlertStyle.innerHTML = util.InitStyle;
-window.document.head.appendChild( AlertStyle );
 
 /**
  * @param { Object } options
@@ -137,6 +136,7 @@ function NewAlert( options ) {
     
     if ( !initContainer ) {
         initContainer = true;
+        window.document.head.appendChild( AlertStyle );
         window.document.body.appendChild( AlertContainer );
     }
     
